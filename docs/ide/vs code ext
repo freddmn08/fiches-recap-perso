@@ -1,0 +1,10 @@
+---
+vscode-icons
+
+Bring icons to your Visual Studio Code (minimum supported version: 1.8.1)
+
+ext install robertohuertasm.vscode-icons
+
+---
+
+Coloration syntaxique dans Visual Studio code : extension [Laravel Blade Snippets](https://marketplace.visualstudio.com/items?itemName=onecentlin.laravel-blade)
