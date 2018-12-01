@@ -30,11 +30,36 @@ php -r "unlink('composer-setup.php');"
 
 Au besoin, on redémarrera Apache avec la commande `sudo systemctl restart apache2`
 
-### 2. Mise à jour (version mineure)
+### 2. Installation de Symfony
+
+On installe Symfony dans le dossier de travail à l'aide de la commande `composer create-project symfony/website-skeleton mon-dossier-de-travail`
+
+On peut alors lancer un serveur de développement à l'aide de la console : `php bin/console server:run`
+
+### 3. Mise à jour (version mineure)
 
 [doc upgrade minor version](https://symfony.com/doc/current/setup/upgrade_minor.html)
 
-Dans le cas d'une mise à jour mineure (changement du chiffre du milieu, exemple : 4.1.1 vers 4.2.0), on procède en deux étapes :
+Dans le cas d'une mise à jour mineure (changement du chiffre du milieu, exemple : 4.1.1 vers 4.2.0), on procède en trois étapes :
+
+* Mise à jour (au besoin) du fichier `composer.json` avec des contraintes compatibles avec la nouvelle version de Symfony
+
+    ```
+    {
+        "...": "...",
+
+        "require": {
+            "symfony/cache": "^4.0",
+            "symfony/config": "^4.0",
+            "symfony/console": "^4.0",
+            "symfony/debug": "^4.0",
+            "symfony/dependency-injection": "^4.0",
+            "symfony/dotenv": "^4.0",
+            "...": "..."
+        },
+        "...": "...",
+    }
+    ```
 
 * Mise à jour des librairies Symfony via Composer : `composer update "symfony/*" --with-all-dependencies`
 

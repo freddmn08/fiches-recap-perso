@@ -36,12 +36,16 @@ Notes sur le micro framework PHP Lumen par Laravel. Au menu :
 
 * Installation : [ici](docs/symfony/installation.md)
 
-* Structure d'un projet : [ici](docs/symfony/installation.md)
+* Structure d'un projet : [ici](docs/symfony/structure-projet.md)
+
+* Console : [ici](docs/symfony/console.md)
 
 ### Fondamentaux :
 
-* Routing : [ici](docs/symfony/installation.md)
+* Routing : [ici](docs/symfony/routing.md)
 
-* Contrôleurs : [ici](docs/symfony/installation.md)
+* Contrôleurs : [ici](docs/symfony/controleur.md)
+
+* Templating avec Twig : [ici](docs/symfony/twig-moteur-template.md)
 
 * Databases avec Doctrine : [ici](docs/symfony/database-orm-doctrine.md)
