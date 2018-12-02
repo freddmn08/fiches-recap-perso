@@ -42,6 +42,8 @@ Notes sur le micro framework PHP Lumen par Laravel. Au menu :
 
 ### Fondamentaux :
 
+* Requêtes et réponses HTTP avec la surcouche objet HttpFoundation : [ici](docs/symfony/requete-reponse.md)
+
 * Routing : [ici](docs/symfony/routing.md)
 
 * Contrôleurs : [ici](docs/symfony/controleur.md)

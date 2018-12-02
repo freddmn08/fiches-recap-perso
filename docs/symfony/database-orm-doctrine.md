@@ -4,6 +4,8 @@
 
 Doctrine est une librairie externe permettant une gestion ORM des bases de données avec Symfony.
 
+> Doctrine chez Symfony est l'équivalent d'Eloquent pour Laravel
+
 ## 1. Installation de Doctrine
 
 On installe Doctrine via le pack ORM ainsi que MakerBundle.
@@ -56,7 +58,7 @@ En cas de réussite, apparaît un message de ce type :
  See https://symfony.com/doc/current/bundles/DoctrineMigrationsBundle/index.html
  ```
 
- Le fichier php alors créé contient les informations permettant de mettre de créer (méthode up) ou de supprimer (méthode down) la table associée à l'entity créée précédemment.
+ Le fichier PHP alors créé contient les informations permettant de créer (méthode `up`) ou de supprimer (méthode `down`) la table associée à l'entity créée précédemment.
 
  On crée ensuite la table depuis la console avec la commande : `php bin/console doctrine:migrations:migrate` .
 

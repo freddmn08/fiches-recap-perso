@@ -1,10 +1,10 @@
 # Twig, le moteur de templates de Symfony
 
-[doc Twig](https://symfony.com/doc/master/templating.html) - [cours OCR Twig](https://openclassrooms.com/fr/courses/5489656-construisez-un-site-web-a-l-aide-du-framework-symfony-4/5517021-dynamisez-vos-vues-a-l-aide-de-twig)
+[Twig](https://twig.symfony.com/) - [doc symfony Twig](https://symfony.com/doc/master/templating.html) - [cours OCR Twig](https://openclassrooms.com/fr/courses/5489656-construisez-un-site-web-a-l-aide-du-framework-symfony-4/5517021-dynamisez-vos-vues-a-l-aide-de-twig)
 
 ## 1. Présentation de Twig
 
-Symfony dispose d'un puissant moteur de templating appelé Twig. Cet outil est plus adapté que PHP en tant que moteur de template pour au moins trois raisons :
+Symfony dispose d'un puissant moteur de templating appelé Twig, il a été pensé et codé par le créateur de Symfony, Fabien Potencier. Cet outil est plus adapté que PHP en tant que moteur de template pour au moins trois raisons :
 
 * Twig a une syntaxe plus concise et plus claire
 
@@ -96,7 +96,28 @@ Hello {{ name }}!
 
 Twig dispose par défaut de [filtres](https://twig.symfony.com/doc/2.x/filters/index.html), de [tags](https://twig.symfony.com/doc/2.x/tags/index.html) et de [fonctions](https://twig.symfony.com/doc/2.x/functions/index.html) permettant de modifier le contenu d'une view avant son rendu. Il est également possible d'en créer de façon custom via l'[extension Twig](https://symfony.com/doc/master/templating/twig_extension.html).
 
+### 5.a) Les filtres
+
 **Exemple de filtre :** `{{ title|upper }}` met un titre en majuscule 
+
+### 5.b) Les Tags
+
+Les tags sont des éléments de langage propres à Twig. On donne la liste des tags les plus utilisés :
+
+* block : définit un espace surchargeable
+
+* do, if, else, for, (with) : éléments de langage identiques à PHP
+
+* import : permet d'importer un fichier comprenant des macros
+
+* set : permet de définir une ou plusieurs variables
+
+* spaceless : supprime tous les espaces entre les tags HTML
+
+* verbatim : ne sera pas pris en compte par Twig
+
+### 5.c) Les fonctions
+
 
 ## 6. Héritage de layouts
 
