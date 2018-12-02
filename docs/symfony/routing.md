@@ -72,8 +72,6 @@ class MonControleur extends AbstractController
 
 Si l'on souhaite passer un paramètre dans l'URL d'une route, il suffit de le préciser entre `{}` dans le endpoint comme suit : `{param}`. On peut également préciser optionnellement une contrainte sur le paramètre en indiquant une expression régulière à matcher à la clé `requirements`.
 
-> Symfony dispose d'une façon de définir de façon unique une route dans une langue donnée sans duplication [doc localized routing](https://symfony.com/doc/current/routing.html#localized-routing-i18n)
-
 #### Codage de la route en YAML
 
 ```
@@ -218,13 +216,31 @@ On peut plus simplement définir une route à l'aide de `annotations`. Pour cela
 
 En pratique, on importe le namespace `Route` dans le fichier du contrôleur via la commande `use Symfony\Component\Routing\Annotation\Route;`.
 
-Avec `annotations`, on ne définit plus la route dans un fichier dédié (`routes.yaml` ou `routes.php`), mais dans le DocBlock de la méthode qui lui est associée à l'aide de la commande `@Route`.
+Avec `annotations`, on ne définit plus la route dans un fichier dédié (`routes.yaml` ou `routes.php`), mais dans le DocBlock de la méthode qui lui est associée à l'aide de la commande `@Route`. Eh oui, dans Symfony on définit une route dans un... commentaire :flushed: On veillera bien à l'entourer par `/** ... route ... */` et non pas avec des doubles slashes `//`.
 
-Son premier argument est le endpoint et le second (optionnel) est le nom de la route : `@Route("/endpoint", name="nom_de_la_route")`
+**Arguments de la commande `@Route` :**
+
+* 1er argument : endpoint
+
+* argument (optionnel) à la clé `name` : nom de la route
+
+* argument (optionnel) à la clé `methods` : méthode HTTP
+
+* argument (optionnel) à la clé `requirements` : expression régulière que l'éventuel paramètre d'URL doit matcher
+
+On peut également définir l'internationalisation de l'URL de façon unique dans une langue donnée sans duplication ([doc localized routing](https://symfony.com/doc/current/routing.html#localized-routing-i18n))
+
+**Exemple de route :**
+
+```
+/**
+ * @Route("/product/{id}", name="product_show", requirements={"id"="\d+"}, methods={"GET"})
+ */
+```
 
 :warning: On délimitera bien les arguments avec des double quotes `"` et non pas avec des simple quotes `'` (ne marche pas !)
 
-**Codage complet d'une route avec passage de paramètre :**
+**Codage d'une route avec passage de paramètre + méthode :**
 
 ```
 // src/Controller/MonControleur.php
@@ -237,7 +253,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MonControleur
 {
     /**
-     * @Route("/endpoint/{param}", name="nom_de_la_route")
+     * @Route("/endpoint/{param}", name="nom_de_la_route", methods={"GET"})
      */
     public function maMethode($param)
     {
