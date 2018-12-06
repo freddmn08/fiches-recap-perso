@@ -50,4 +50,10 @@ Notes sur le micro framework PHP Lumen par Laravel. Au menu :
 
 * Templating avec Twig : [ici](docs/symfony/twig-moteur-template.md)
 
-* Databases avec Doctrine : [ici](docs/symfony/database-orm-doctrine.md)
+* L'ORM Doctrine :
+
+    * ORM, Entity, EntityManager, Repository : [ici](docs/symfony/orm-doctrine.md)
+
+    * Annotations de référence : [ici](docs/symfony/annotations.md)
+
+    * CRUD avec Doctrine : [ici](docs/symfony/database-doctrine.md)
