@@ -6,6 +6,8 @@ Les annotations sont des métadonnées écrites dans des commentaires spéciaux 
 
 ## Un DocBlock, c'est quoi au fait ? :nerd_face:
 
+[doc phpDocumentor](http://docs.phpdoc.org/guides/docblocks.html)
+
 PHPDoc est une adaptation de Javadoc au langage PHP. C'est un standard dans la façon de commenter du code PHP. Parmi les composants de PHPDoc, on trouve des blocs de commentaires spéciaux appelés _DocBlocks_.
 
 Un DocBlock est un commentaire débutant par `/**`, chaque nouvelle ligne démarrant avec `*` et se terminant par `*/`.
@@ -19,6 +21,16 @@ Un DocBlock est un commentaire débutant par `/**`, chaque nouvelle ligne démar
 function foo()
 {
 }
+```
+
+Un DocBlock contient des tags débutant par le symbole `@` suivi du nom du tag. Ce sont des métadonnées qui apportent des informations sur l'élément auquel ils sont associés (la déclaration d'une fonction ou méthode par exemple). En plus de son nom, un tag peut prendre un ou plusieurs arguments.
+
+**Exemple générique de DocBlock avec tags :**
+
+```
+/**
+ * @param string $argument1 This is the description.
+ */
 ```
 
 C'est dans ces DocBlocks que Symfony via Doctrine définit des annotations permettant de fixer les caractéristiques d'une entité. On en liste ci-après quelques unes de référence.

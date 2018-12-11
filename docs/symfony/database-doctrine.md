@@ -34,11 +34,19 @@ php bin/console doctrine:database:create
 
 ## 3. Création des classes Entity
 
-Les classes Entity sont les classes Model associées à chacune des tables de la base de données. On crée les Entity avec la console : `php bin/console make:entity`. On répond alors à une suite de questions :
+[doc types Doctrine](https://www.doctrine-project.org/projects/doctrine-dbal/en/2.8/reference/types.html)
 
-* Nom de la table
+Les classes Entity sont les modèles associés à chacune des tables de la base de données. On crée les entités avec la console : `bin/console make:entity`. On répond alors à une suite de questions du genre :
 
-* Nom du premier champ / Type / Null or not, etc
+* Class name of the entity to create or update (= nom de l'entité, ie celui de la table)
+
+* New property name (= nom du premier champ)
+
+* Field type (= type Doctrine)
+
+* Field length (si type string))
+
+* Can this field be null in the database (nullable) (yes/no)
 
 * Nom du deuxième champ / etc
 
@@ -46,7 +54,7 @@ Les classes Entity sont alors créées dans `src/Entity/NomDeLEntite.php`. La co
 
 ## 4. Création des tables en base de données avec Migrations
 
-La commande précédente crée le modèle mais pas la table en base, cela se fait avec l'outil Migrations dans la console : `php bin/console make:migration`
+La commande précédente crée le modèle mais pas la table en base, cela se fait avec l'outil Migrations dans la console : `bin/console make:migration`
 
 En cas de réussite, apparaît un message de ce type :
 
