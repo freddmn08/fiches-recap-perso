@@ -14,9 +14,9 @@ Ce composant gère les feuilles de style css et les fichiers JS du projet Symfon
 
 ## 2. Gestion "manuelle" des assets
 
-Dans Symfony 4, on doit nécessairement placer les assets dans le dossier `public` en y créant, par exemple, le sous-dossier `public/assets` qui contiendra les images, fichiers CSS, JS, etc du projet.
+Dans Symfony 4, on place  nécessairement les assets dans le dossier `public`, par exmple en créant le sous-dossier `public/assets` qui contiendra les images, fichiers CSS, JS et autres du projet.
 
-Il n'est ainsi plus nécessaire de définir en dur les chemins vers ces fichiers externes dans les habituelles balises `<link>` dans le head ou `<script>` dans le body du fichier HTML.
+On appellera alors ces fichiers via les habituelles balises `<link>` dans le head ou `<script>` dans le body du fichier HTML, mais sans définir en dur les chemins vers ces fichiers externes. On utlisera pour cela la fonction `asset()`.
 
 ## 2.a) Configuration du chemin vers les assets
 
@@ -46,6 +46,36 @@ En créant un sous-dossier `public/assets/css`, on peut y placer une feuille de 
         {% endblock %}
     </head>
     // ...
+```
+
+### 2.c) Cas de l'importation de Bootstrap et jQuery
+
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        // ...
+        {% block stylesheets %}   
+            {# Boostrap 4 Latest compiled and minified CSS #}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+            {# Optional theme #}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+            {# Personal CSS style file #}
+            <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+        {% endblock %}
+    </head>
+    // ...
+    <body>
+    // ...
+    {% block javascripts %}
+            {# jQuery (necessary for Bootstrap's JavaScript plugins) #}
+            <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+            
+            {# Boostrap 4 Latest compiled and minified JavaScript #}
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        {% endblock %}
+    </body>
+</html>
 ```
 
 ## 3. Gestion avancée des assets avec le webpack Encore

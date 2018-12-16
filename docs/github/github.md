@@ -228,3 +228,15 @@ master
 *En complément*
 `git branch -a` pour voir toutes les branches (en local *et* à distance)
 `git branch -d <branch>` pour supprimer une branche en local
+
+## Modifier un commit non encore push
+
+On a déjà add et commit mais pas encore push, on se rend compte qu'il y a une autre modif faite sur un fichier. Plutôt que de créer un nouveau commit, on peut modifier le dernier commit non encore push avec la commande : `git commit --append`
+
+On peut modifier le nom du commit, y ajouter des fichiers.
+
+## Mettre en attente un fichier non encore push
+
+Modifier un fichier en cours
+
+`git stash pop`

@@ -8,3 +8,20 @@ ext install robertohuertasm.vscode-icons
 ---
 
 Coloration syntaxique dans Visual Studio code : extension [Laravel Blade Snippets](https://marketplace.visualstudio.com/items?itemName=onecentlin.laravel-blade)
+
+---
+PHP Doc blocker
+Gestion des DocBlocks (entre autres pour annotations dans Symfony)
+https://marketplace.visualstudio.com/items?itemName=neilbrayfield.php-docblocker
+
+---
+PHP Intellisense
+Autocompletion PHP et PHP Namespace resolver
+https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-intellisense
+
+---
+Twig pack
+
+Twig language
+https://marketplace.visualstudio.com/items?itemName=mblode.twig-language
+Snippets, Syntax Highlighting, Hover, and Formatting for Twig

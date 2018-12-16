@@ -28,14 +28,14 @@ Avec Doctrine, des méta-données appelées annotations sont écrites dans des c
 
 | Annotation | Désignation |
 | :-- |--|--|
-| @ORM\Entity | marque qu’une classe PHP est une entité
-| @ORM\Table | décrit la table d’une entité persistante
-| @ORM\Column | définit les caractéristiques d’une colonne
-| @ORM\Id | marque l’identifiant de l’entité
-| @ORM\GeneratedValue | utilisé pour générer des identifiants annotés par @Id
-| @ORM\OneToOne | entité en relation avec une seule entité
-| @ORM\OneToMany | entité en relation avec plusieurs entités
-| @ORM\ManyToMany | entités en relation avec plusieurs entités
+| @ORM\Entity | marque qu’une classe PHP est une entité |
+| @ORM\Table | décrit la table d’une entité persistante |
+| @ORM\Column | définit les caractéristiques d’une colonne |
+| @ORM\Id | marque l’identifiant de l’entité |
+| @ORM\GeneratedValue | utilisé pour générer des identifiants annotés par @Id |
+| @ORM\OneToOne | entité en relation avec une seule entité |
+| @ORM\OneToMany | entité en relation avec plusieurs entités |
+| @ORM\ManyToMany | entités en relation avec plusieurs entités |
 
 >ORM\ sera rajouté par Symfony
 
@@ -44,7 +44,7 @@ Toutes les annotations sont disponibles dans [la documentation de Doctrine](http
 >Les annotations @var, @return, @param, @author... sont des
 annotations phpdoc et non pas Doctrine.
 
-Exemples d'annotations dans la fiche récap annotations.
+Exemples d'annotations dans la fiche récap [annotations](./annotations/md).
 
 ### 2.b) La création d'une Entity
 
@@ -57,16 +57,22 @@ Les types définis dans les annotations Doctrine ne sont ni les types PHP ni ceu
 | Type      |     Désignation    |   Type MySQL |
 | :--: |--|--|
 | string | chaîne avec au plus 255 caractères | VARCHAR |
-| boolean | valeurs booleennes true et false | BOOLEAN |
-| integer | entier inférieur à 2 147 483 647 | INT |
-| date | date et heure | DATETIME |
-| datetime | durée | TIMESTAMP |
-|object | objet / tableau / text | clob |
+| text | chaîne de caractères sans limitation de taille | TEXT |
+| boolean | valeurs booléennes true et false | BOOLEAN |
+| **#** | **INTEGER TYPES** | **#** |
+| smallint | entier codé sur 2 octets (unsigned entre 0 et 65 535) | SMALLINT |
+| integer | entier codé sur 4 octets (unsigned entre 0 et 4 294 967 295) | INT |
+| **#** | **DATE & TIME TYPES** | **#** |
+| date | date sans heure ni timezone | DATE |
+| time | heure sans timezone | TIME |
+| datetime | date et heure sans timezone | DATETIME |
+
+| object | objet / tableau / text | clob |
 | float | nombres décimaux | float |
 
 >Les types Doctrine sont sensibles à la casse
 
-La liste complète est disponible dans [la documentation Doctrine](https://www.doctrine-project.org/projects/doctrine-dbal/en/2.6/reference/types.html#types).
+La liste complète des types Doctrine est disponible dans [la documentation Doctrine](https://www.doctrine-project.org/projects/doctrine-dbal/en/2.6/reference/types.html#types).
 
 **Exemple d'Entity avec Doctrine :**
 

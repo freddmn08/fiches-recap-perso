@@ -36,7 +36,7 @@ php bin/console doctrine:database:create
 
 [doc types Doctrine](https://www.doctrine-project.org/projects/doctrine-dbal/en/2.8/reference/types.html)
 
-Les classes Entity sont les modèles associés à chacune des tables de la base de données. On crée les entités avec la console : `bin/console make:entity`. On répond alors à une suite de questions du genre :
+Les classes Entity sont les modèles associés à chacune des tables de la base de données. On crée les entités avec la console : `php bin/console make:entity`. On répond alors à une suite de questions du genre :
 
 * Class name of the entity to create or update (= nom de l'entité, ie celui de la table)
 
@@ -50,13 +50,13 @@ Les classes Entity sont les modèles associés à chacune des tables de la base 
 
 * Nom du deuxième champ / etc
 
-Les classes Entity sont alors créées dans `src/Entity/NomDeLEntite.php`. La console crée automatiquement les getters et les setters associés à chaque champ de la table en question.
+Les classes Entity sont alors créées dans `src/Entity/NomEntite.php`. La console crée automatiquement les getters et les setters associés à chaque champ de la table en question.
 
 ## 4. Création des tables en base de données avec Migrations
 
-La commande précédente crée le modèle mais pas la table en base, cela se fait avec l'outil Migrations dans la console : `bin/console make:migration`
+La commande précédente crée le modèle mais pas la table en base, cela se fait avec l'outil Migrations dans la console : `php bin/console make:migration`
 
-En cas de réussite, apparaît un message de ce type :
+En cas de réussite, apparaît un message du type :
 
 ```
  Success! 
@@ -66,7 +66,7 @@ En cas de réussite, apparaît un message de ce type :
  See https://symfony.com/doc/current/bundles/DoctrineMigrationsBundle/index.html
  ```
 
- Le fichier PHP alors créé contient les informations permettant de créer (méthode `up`) ou de supprimer (méthode `down`) la table associée à l'entity créée précédemment.
+ Le fichier PHP alors créé contient les informations permettant de créer (méthode `up`) ou de supprimer (méthode `down`) la table associée à l'entité créée précédemment.
 
  On crée ensuite la table depuis la console avec la commande : `php bin/console doctrine:migrations:migrate` .
 
@@ -74,7 +74,7 @@ En cas de réussite, apparaît un message de ce type :
 
  ## 5. Ajout d'un champ après la création de la table
 
- Pour cela, on peut éditer à la mano la classe Entity associée à la table. On peut également utiliser la console avec `make:entity`. En effet, cette commande permet de créer ou de mettre à jour une entity existante ! Il suffit alors de renseigner le nom de la table, puis de préciser les paramètres du nouveau champ :
+ Pour cela, on peut éditer à la mano la classe Entity associée à la table. On peut également utiliser la console avec `make:entity`. En effet, cette commande permet de _créer ou de mettre à jour_ une entité existante ! Il suffit alors de renseigner le nom de la table, puis de préciser les paramètres du nouveau champ :
 
 INSERER CAP MAKE:ENTITY_UPDATE
 

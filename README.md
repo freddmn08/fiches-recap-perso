@@ -48,7 +48,7 @@ Notes sur le micro framework PHP Lumen par Laravel. Au menu :
 
 * Contrôleurs : [ici](docs/symfony/controleur.md)
 
-* La gestion des assets avec le webpack Encore : [ici](docs/symfony/assets.md)
+* La gestion des assets avec / sans le webpack Encore : [ici](docs/symfony/assets.md)
 
 * Templating avec Twig : [ici](docs/symfony/twig-moteur-template.md)
 
