@@ -4,11 +4,94 @@
 
 Symfony 4 dispose d'un composant nommé Form dédié à la gestion des formulaires. Il s'agit d'une librairie externe qui peut être utilisée en dehors de Symfony.
 
-## Installation
+## 1. Installation
 
-On installe le composant Form avec la commande `composer require symfony/form`
+On installe le composant `Form` avec la commande `composer require symfony/form` (inutile dans le cas d'une installation Symfony web-skeleton)
 
-## Création d'un formulaire associé à une entité
+## 2. Création et traitement d'un formulaire non relié à une entité
+
+[doc building forms](https://symfony.com/doc/current/forms.html#building-the-form)
+
+Un formulaire pouvant nécessiter un code conséquent, on délègue la partie création du formulaire à une fonction dédiée externe à celle associée à la route traitant le formulaire.
+
+1. On crée une fonction private `createForm()` dans le contrôleur traitant le formulaire.
+
+1. On crée une variable "formulaire" `$form` sur laquelle on appelle la méthode `createFormBuilder()` : `$form = $this->createFormBuilder()`
+
+1. On appelle sur cette variable la méthode `add()` qui permet d'ajouter des inputs au formulaire :
+
+    * paramètre 1 : attribut `name` de l'input
+    * paramètre 2 : attribut `type` de l'input
+    * paramètre 3 : passage de paramètres dans un array (placeholder, label, etc)
+
+    **Exemple :** création d'un input de type text
+
+    ```
+    private function createForm()
+    {
+        $form = $this->createFormBuilder(null,[])
+                ->add('lastname', TextType::class, [
+                    'label' => 'Nom :',
+                    'attr' => [
+                        'placeholder' => 'Votre nom',
+                    ],
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => 'Veuillez renseigner un nom'
+                        ])
+                    ]
+                ])
+                // ...
+    }
+    ```
+
+1. Une fois les différents inputs créés avec la méthode `add()`, on génère un objet `Form` en appelant la méthode `getForm()` et on retourne la variable `$form`.
+
+    ```
+    private function createForm()
+    {
+        $form = $this->createFormBuilder(null,[])
+                ->add('lastname', TextType::class, [
+                    'label' => 'Nom :',
+                    'attr' => [
+                        'placeholder' => 'Votre nom',
+                    ],
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => 'Veuillez renseigner un nom'
+                        ])
+                    ]
+                ])
+                // ...
+                ->getForm();
+
+        return $form;
+    }
+    ```
+1. Dans la méthode associée à la route traitant le formulaire :
+    
+    * On génère le formulaire en appelant la fonction `createForm()` dédiée : `$form = $this->createTaskForm();`
+
+    * On récupère les données du formulaire en appelant la méthode `handleRequest()` sur l'objet `Request` : `$form->handleRequest($request);`
+
+    * On traite le formulaire :
+
+        ```
+        // si le formulaire est soumis et valide, alors on en récupère les datas avec getData()
+        if ($form->isSubmitted() && $form->isValid()) {
+            $formData = $form->getData();
+        }
+        ```
+
+1. On affiche alors le formulaire dans la vue en lui passant le formulaire avec la méthode `createView()` :
+
+    ```
+    return $this->render('default/index.html.twig', [
+                'formMovie' => $form->createView()
+            ]);
+    ```
+
+## 3. Création d'un formulaire associé à une entité
 
 On se place dans le cas de la création d'un formulaire associé à la table `videogame`.
 
