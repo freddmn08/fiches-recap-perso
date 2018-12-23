@@ -59,3 +59,7 @@ Notes sur le micro framework PHP Lumen par Laravel. Au menu :
     * Annotations de référence : [ici](docs/symfony/annotations.md)
 
     * CRUD avec Doctrine : [ici](docs/symfony/database-doctrine.md)
+
+* Le composant Form :
+
+    * Bootstrap Datepicker : [ici](docs/symfony/bootstrap-datepicker.md)
