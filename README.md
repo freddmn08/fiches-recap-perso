@@ -1,5 +1,9 @@
 # Fiches recap perso
 
+## Extensions VS Code
+
+[ici](docs/ide/vs-code-extensions.md)
+
 ## Versioning avec Git
 
 * Basics : [ici](docs/github/basics.md)
