@@ -86,14 +86,24 @@ Notes sur le micro framework PHP Lumen par Laravel. Au menu :
 
 * L'ORM Doctrine :
 
-    * ORM, Entity, EntityManager, Repository : [ici](docs/symfony/orm-doctrine.md)
+  * ORM, Entity, EntityManager, Repository : [ici](docs/symfony/orm-doctrine.md)
 
-    * Annotations de référence : [ici](docs/symfony/annotations.md)
+  * Annotations de référence : [ici](docs/symfony/annotations.md)
 
-    * CRUD avec Doctrine : [ici](docs/symfony/database-doctrine.md)
+  * CRUD avec Doctrine : [ici](docs/symfony/database-doctrine.md)
+
+  * Les relations avec Doctrine :
+
+    * OneToMany / ManyToOne : [ici](docs/symfony/relation-manytoone.md)
+    
+    * ManyToMany : [ici](docs/symfony/relation-manytomany.md)
+
+  * Génération de données bouchon avec Fixtures et Faker : [ici](docs/symfony/fixtures-faker.md)
 
 * Le composant Form :
 
-    * Création d'un formulaire simple (sans entité) : [ici](docs/symfony/form-simple.md)
+  * Création d'un formulaire simple (sans entité) : [ici](docs/symfony/form-simple.md)
 
-    * Bootstrap Datepicker : [ici](docs/symfony/bootstrap-datepicker.md)
+  * Thème Bootstrap pour formulaire : [ici](docs/symfony/bootstrap-form-themes.md)
+
+  * Bootstrap Datepicker : [ici](docs/symfony/bootstrap-datepicker.md)
