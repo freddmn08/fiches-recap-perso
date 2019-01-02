@@ -1,8 +1,22 @@
 # Fiches recap perso
 
-## Extensions VS Code
+## VS Code
 
-[ici](docs/ide/vs-code-extensions.md)
+* Extensions : [ici](docs/ide/vs-code-extensions.md)
+
+## jQuery :
+
+* Basics :
+
+  * Sélection d'éléments : [ici](docs/jquery/selection-elements.md)
+  * Modification du contenu d'un élément : [ici](docs/jquery/modification-contenu.md)
+  * Insertion et remplacement d'éléments : [ici](docs/jquery/insertion-remplacement.md)
+
+* Avancée
+
+* Ajax
+
+* Les plugins
 
 ## Versioning avec Git
 
@@ -18,7 +32,7 @@
 
 * Pull request : [ici](docs/github/pull-requests.md)
 
-## Framework Laravel 5
+## Laravel 5
 
 ### Démarrage :
 
@@ -42,13 +56,13 @@
 
 * La gestion des databases avec Eloquent : [ici](docs/laravel/database.md)
 
-## Framework Lumen
+## Lumen 5
 
 Notes sur le micro framework PHP Lumen par Laravel. Au menu :
 
 * Généralités sur Lumen : [ici](docs/lumen/presentation-lumen.md)
 
-## Framework Symfony 4
+## Symfony 4
 
 ### Démarrage :
 
@@ -79,5 +93,7 @@ Notes sur le micro framework PHP Lumen par Laravel. Au menu :
     * CRUD avec Doctrine : [ici](docs/symfony/database-doctrine.md)
 
 * Le composant Form :
+
+    * Création d'un formulaire simple (sans entité) : [ici](docs/symfony/form-simple.md)
 
     * Bootstrap Datepicker : [ici](docs/symfony/bootstrap-datepicker.md)
