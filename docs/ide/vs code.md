@@ -1,3 +1,17 @@
+{
+    "workbench.activityBar.visible": true,
+    "editor.minimap.enabled": false,
+    "emmet.includeLanguages": {
+        "twig": "html"
+    },
+    "editor.wordSeparators": "`~!@#%^&*()-=+[{]}\\|;:'\",.<>/?",
+    "workbench.statusBar.visible": true,
+    "liveshare.increasedGuestLimit": true,
+    "breadcrumbs.enabled": true
+}
+
+Preferences > Settings
+
 ---
 Apache conf
 https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-apache
