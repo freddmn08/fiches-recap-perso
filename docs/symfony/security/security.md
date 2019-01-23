@@ -128,6 +128,117 @@ Il est cependant conseillé de plutôt construire un _Guard Authenticator_ : c'e
 
 ## 4. Denying access, rôles et autres autorisations
 
+### Gestion des rôles
+
+l'admin a accès à tout,
+le user a accès au backend mais pas à edit, show et new
+l'anonyme a accès qu'à la page d'accueil (et le détail d'un film)
+
+bonne pratique : dans la table app_users, un seul champ au type json
+
+OU
+
+Créer une table de rôles et faire une jointure
+
+On crée une table role dans notre cas
+
+Owner : user
+
+Un user a un rôle et un seul
+
+Un role peut être associé à plusieurs users.
+
+console make:entity Role
+
+code / string / 25 / no
+
+name / string / 25 / no
+
+console make:migration
+console doc:mig:mig
+
+console make:entity User
+
+role / relation / ManyToOne / Role / yes / yes / users / no
+
+console make:migration
+console doc:mig:mig
+
+Dans `User.php` :
+
+:warning: Attention aux setters
+
+getRoles() est appelé à l'auth, pas du tout par doctrine. Il retourne un tableau avec les roles de l'user via user->getRoles()
+
+getRole() et setRole() sont gérés par doctrine
+
+```
+/**
+* @ORM\ManyToOne(targetEntity="App\Entity\Role", inversedBy="users")
+*/
+private $role;
+
+//ATTENTION : cette fonction doit retourne obligatoirement un tableau et est necessaire pour la gestion des utilisateurs symfony
+    // note: getRoleS = ACL security.yml + webtoolbar
+    public function getRoles()
+    {
+        return ['ROLE_MON_ADMIN_LUNAR']; // problem : le role est definit en dur dans cette fonction
+    }
+
+    //Note: getRole / set role = Doctrine / Mysql
+    public function getRole(): ?Role
+    {
+        return $this->role;
+    }
+
+    public function setRole(?Role $role): self
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+```
+
+Dans `UserType.php` :
+
+```
+function buildForm
+
+->add('role')//ajout du champs role a afficher dans le formulaire
+```
+
+Cette méthode addrole() va chercher à afficher une représentation textuelle de "role", d'où la nécessité de définir la méthode __toString() :
+
+```
+// Role.php
+public function __toString(){
+        return $this->name;
+    }
+```
+
+On définit les roles dans l'`access_control` du fichier `security.yaml`, on les configure en commençant par les endpoints associés au plus grand nombre de droit jusqu'au endpoint correspondant aux droits les plus restreints :
+
+methods: nom_de_la_methode indique la route à matcher quand plusieurs routes sont possibles, on les différencie du coup par la méthode associée (plus bas, on cible la méthode DELETE par exemple)
+
+```
+access_control: #ACL - section qui permet de lister les url concernée par la securité + le role que l'utilisateur doit avoir pour consulter l'url
+        - { path: '^/backend/[a-z]+/new', roles: ROLE_ADMIN } 
+        - { path: '^/backend\/[a-z]+\/[0-9]+\/edit', roles: ROLE_ADMIN } 
+        - { path: '^/backend\/[a-z]+\/[0-9]+', roles: ROLE_ADMIN, methods: DELETE  } 
+        - { path: '^/backend\/[a-z]+', roles: ROLE_USER } # expression reguliere : url qui commence par /backend (^)
+        - { path: ^/ezadmin, roles: ROLE_ADMIN }
+```
+
+**Hiérarchie des rôles :** principe des matriochka
+
+On ajoute une clé `role_hierarchy` dans le security.yaml :
+
+```
+role_hierarchy: # quel role sont inclus dans tel ou tel role
+        ROLE_ADMIN: ROLE_USER #ici je definit que Role admin contient role user
+        ROLE_LUNAR_SUPER_ADMIN: ROLE_ADMIN
+```
+
 ## 5. Fetching the current object
 
 ### Gestion du logout

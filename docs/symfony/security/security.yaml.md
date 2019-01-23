@@ -78,6 +78,14 @@ Un seul firewall est actif par requête : Symfony utilise la clé `pattern` pour
 
 * **main firewall :** toutes les autres URLs sont gérées par le `main` firewall. On n'y trouve pas de clé `pattern`, cela signifie que ce firewall matche toutes les URLs. Cela ne signifie pas pour autant que toute URL nécessite une authentification. En effet, via la clé `anonymous`, le main firewall est accessible anonymement. Sur la home, apparaît dans la wdt (=web debug toolbar) "Authenticated Yes, Logged as anon.".
 
+    * **form_login :**
+
+    ```
+    form_login:
+                login_path: login #url de redirection vers le formulaire de login
+                check_path: login #url de vérification du formulaire
+    ```
+
     * **logout :** pour gérer le logout, ça se passe à la clé `logout`
 
     ```

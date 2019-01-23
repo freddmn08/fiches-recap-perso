@@ -32,7 +32,7 @@ Choose a name for the controller class (e.g. SecurityController) [SecurityContro
 
  Cela génère trois choses :
 
-* (1) une route `/login` et le contrôleur `LoginController` associé
+* (1) une route `/login` et le contrôleur `SecurityController` associé
 
     <details><summary>Code de la route et du contrôleur</summary>
     

@@ -82,7 +82,7 @@ Notes sur le micro framework PHP Lumen par Laravel. Au menu :
 
 * La gestion des assets avec / sans le webpack Encore : [ici](docs/symfony/assets.md)
 
-* Templating avec Twig : [ici](docs/symfony/twig-moteur-template.md)
+* Templating avec Twig : [ici](docs/symfony/twig/twig-moteur-template.md)
 
 * L'ORM Doctrine :
 

@@ -561,3 +561,20 @@ Cette approche a l'avantage de gérer la possibilité de l'ajout d'une feuille d
 * How to Render a Template without a custom Controller
 * How to Check the Syntax of Your Twig Templates
 * How to Write a custom Twig Extension
+
+## 9. Constantes globales dans Twig
+
+```
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    form_themes:
+        - 'bootstrap_4_layout.html.twig'
+    #dans les autres fichiers de conf parameters = constantes applicatives symfo
+    # globals = parameters pour twig = constantes applicatives destinées aux vues
+    # il est aussi possible de faire communiquer cette section avec les autres constantes & parametres définit dans les autres configuration *.yml
+    globals:
+       image_upload_path: 'uploads/images/' 
+```
+

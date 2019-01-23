@@ -1,0 +1,1 @@
+La commande `source commande` permet de déco reco le terminal en rechargeant cette commande sans fermer le terminal
