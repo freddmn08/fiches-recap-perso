@@ -1,10 +1,49 @@
-# Databases avec l'ORM Doctrine
+# L'ORM Doctrine
 
 [doc](https://symfony.com/doc/current/doctrine.html)
 
-Doctrine est une librairie externe permettant une gestion ORM des bases de données avec Symfony.
+## 0. Préambule
+
+### 0.1. Notion d'ORM
+
+L'objectif d'un ORM (pour Object-Relation Mapper, soit en français « lien objet-relation ») est simple : se charger de l'enregistrement des données en faisant oublier qu'on a une base de données. Comment ? En s'occupant de tout ! Plus d'écriture de requêtes, ni de création de tables via phpMyAdmin.
+
+### 0.2. L'ORM Doctrine 2
+
+Doctrine est une librairie externe permettant une gestion ORM des bases de données avec Symfony. C'est l'ORM par défaut de Symfony.
 
 > Doctrine chez Symfony est l'équivalent d'Eloquent pour Laravel
+
+Doctrine ORM implémente 2 patterns objets pour mapper un objet PHP à des éléments d'un système de persistance :
+
+* le pattern "Data Mapper" ;
+* le pattern "Unit of Work".
+
+**Le Data Mapper :**
+
+Le Data Mapper est une couche qui synchronise la donnée stockée en base avec les objets PHP. En d'autres termes :
+
+* il peut insérer, mettre à jour des entrées en base de données à partir de données contenues dans les propriétés d'un objet ;
+* il peut supprimer des entrées en base de données si les "entités" liées sont identifiées pour être supprimées ;
+* il "hydrate" des objets en mémoire à partir d'informations contenues en base.
+
+L'implémentation dans le projet Doctrine de ce Data Mapper s'appelle l'Entity Manager, les entités ne sont que de simples objets PHP mappés.
+
+Le grand avantage d'utiliser un Data Mapper, c'est que les objets sont complètement indépendants du système de stockage.
+
+Pour une raison de performance et d'intégrité, l'Entity Manager ne synchronise pas directement chaque changement avec la base de données.
+
+**L'Unit of work :**
+
+L'Unit of Work est lui utilisé pour gérer l'état des différents objets hydratés par l'Entity Manager. La synchronisation en base ne s'effectue que quand on exécute la méthode "flush" et est effectuée sous forme d'une transaction qui est annulée en cas d'échec.
+
+L'Entity Manager fait donc le lien entre les "Entités", qui sont de simples objets PHP, et la base de données :
+
+* à l'aide de la fonction find, il retrouve et hydrate un objet à partir d'informations retrouvées en base ;
+* à l'aide de la fonction persist, il ajoute l'objet manipulé dans l'Unit of Work ;
+* à l'aide de la fonction flush, tous les objets "marqués" pour être ajoutés, mis à jour et supprimés conduiront à l'exécution d'une transaction avec la base de données.
+
+Pour marquer un objet pour la suppression, il faut utiliser la fonction remove.
 
 ## 1. Installation de Doctrine
 
@@ -130,7 +169,7 @@ class ProductController extends AbstractController
 
 ## 7. Lecture de données en base
 
-On crée une méthode dans le contrôleur associé à l'entité afin de pouvoir lire des données en base. Cela se fait via le repository associé à l'entité.Un repository se comporte comme une classe PHP dont le rôle est d'aller lire en base les entités d'une certaine classe (la classe Product en l'occurrence). 
+On crée une méthode dans le contrôleur associé à l'entité afin de pouvoir lire des données en base. Cela se fait via le repository associé à l'entité. Un repository se comporte comme une classe PHP dont le rôle est d'aller lire en base les entités d'une certaine classe (la classe Product en l'occurrence). 
 
 ```
 // Lecture d'une entrée dans la table product
